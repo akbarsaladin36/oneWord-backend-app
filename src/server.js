@@ -19,8 +19,8 @@ app.use(helmet())
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use('/backend6/api/v1', routerNavigation)
-app.use('/backend6/api', express.static('src/uploads'))
+app.use('/backend7/api/v1', routerNavigation)
+app.use('/backend7/api', express.static('src/uploads'))
 
 app.listen(port, () => {
   console.log(`Your express backend server is connected at port ${port}`)

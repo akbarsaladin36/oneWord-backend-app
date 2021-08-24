@@ -1,0 +1,406 @@
+{
+  "client": "Thunder Client",
+  "collectionName": " oneWord Blog App",
+  "dateExported": "2021-08-23T17:44:36.216Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "containerId": "",
+      "sortNum": 10000,
+      "name": "Auth",
+      "_id": "54d6d04e-4e3a-46d0-aff7-cbc4f4dea151",
+      "created": "2021-08-23T16:24:38.284Z",
+      "settings": {
+        "headers": [],
+        "tests": []
+      }
+    },
+    {
+      "containerId": "",
+      "sortNum": 20000,
+      "name": "Users",
+      "_id": "05e41b92-6afc-47b1-9091-68966cd3a2c5",
+      "created": "2021-08-23T16:26:16.305Z",
+      "settings": {
+        "headers": [],
+        "tests": []
+      }
+    },
+    {
+      "containerId": "",
+      "sortNum": 30000,
+      "name": "Posts",
+      "_id": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "created": "2021-08-23T16:26:27.196Z"
+    }
+  ],
+  "requests": [
+    {
+      "containerId": "54d6d04e-4e3a-46d0-aff7-cbc4f4dea151",
+      "sortNum": 10000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Login",
+      "url": "http://localhost:3007/backend7/api/v1/auth/login",
+      "method": "POST",
+      "modified": "2021-08-23T16:24:44.678Z",
+      "created": "2021-08-23T16:17:28.674Z",
+      "_id": "fcb8f431-cb53-4978-8613-b2423f299261",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "userEmail",
+            "value": "wapave7321@asmm5.com"
+          },
+          {
+            "name": "userPassword",
+            "value": "admin1"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "containerId": "54d6d04e-4e3a-46d0-aff7-cbc4f4dea151",
+      "sortNum": 20000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Register",
+      "url": "http://localhost:3007/backend7/api/v1/auth/register",
+      "method": "POST",
+      "modified": "2021-08-23T16:31:27.612Z",
+      "created": "2021-08-23T16:26:38.838Z",
+      "_id": "b5056446-2e32-4430-b677-812397e0cac7",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "userName",
+            "value": "admin2"
+          },
+          {
+            "name": "userEmail",
+            "value": "kefev30708@ansomesa.com"
+          },
+          {
+            "name": "userPassword",
+            "value": "admin2"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "containerId": "05e41b92-6afc-47b1-9091-68966cd3a2c5",
+      "sortNum": 30000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Get All Users",
+      "url": "http://localhost:3007/backend7/api/v1/users/search?page=1&limit=5&sort&keywords=admin",
+      "method": "GET",
+      "modified": "2021-08-23T16:40:38.710Z",
+      "created": "2021-08-23T16:37:04.065Z",
+      "_id": "bcc97b0b-74a8-4abd-bfe1-ae99e52c3621",
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "limit",
+          "value": "5",
+          "isPath": false
+        },
+        {
+          "name": "sort",
+          "value": "",
+          "isPath": false
+        },
+        {
+          "name": "keywords",
+          "value": "admin",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    },
+    {
+      "containerId": "05e41b92-6afc-47b1-9091-68966cd3a2c5",
+      "sortNum": 40000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Get One User",
+      "url": "http://localhost:3007/backend7/api/v1/users/2",
+      "method": "GET",
+      "modified": "2021-08-23T16:41:46.425Z",
+      "created": "2021-08-23T16:37:13.853Z",
+      "_id": "d1175d4f-7fbe-43c5-8063-eacc8af870ed",
+      "params": [],
+      "tests": []
+    },
+    {
+      "containerId": "05e41b92-6afc-47b1-9091-68966cd3a2c5",
+      "sortNum": 50000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Update One User",
+      "url": "http://localhost:3007/backend7/api/v1/users/1",
+      "method": "PATCH",
+      "modified": "2021-08-23T16:44:44.501Z",
+      "created": "2021-08-23T16:42:22.656Z",
+      "_id": "2b09f98a-3678-4528-9611-fa3a135b92b4",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "userName",
+            "value": "admin1"
+          },
+          {
+            "name": "userFirstName",
+            "value": "Akbar"
+          },
+          {
+            "name": "userLastName",
+            "value": "Saladin"
+          },
+          {
+            "name": "userPhoneNumber",
+            "value": "012345678"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "containerId": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "sortNum": 60000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Get All Posts",
+      "url": "http://localhost:3007/backend7/api/v1/posts",
+      "method": "GET",
+      "modified": "2021-08-23T17:13:59.183Z",
+      "created": "2021-08-23T17:05:05.945Z",
+      "_id": "f1d599e9-3c7d-486b-b7f6-44065d3a30d0",
+      "params": [],
+      "tests": []
+    },
+    {
+      "containerId": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "sortNum": 70000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Get One Post",
+      "url": "http://localhost:3007/backend7/api/v1/posts/1",
+      "method": "GET",
+      "modified": "2021-08-23T17:13:33.517Z",
+      "created": "2021-08-23T17:12:56.327Z",
+      "_id": "e6932826-5f88-49a7-b546-3025c8b1afe1",
+      "params": [],
+      "tests": []
+    },
+    {
+      "containerId": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "sortNum": 80000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Create Post",
+      "url": "http://localhost:3007/backend7/api/v1/posts",
+      "method": "POST",
+      "modified": "2021-08-23T17:41:34.129Z",
+      "created": "2021-08-23T17:14:16.564Z",
+      "_id": "6e7553b4-c981-49dd-bcd7-d57bd32b19e8",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "postTitle",
+            "value": "Post kedua"
+          },
+          {
+            "name": "postMessage",
+            "value": "ini adalah post kedua."
+          },
+          {
+            "name": "postKeywords",
+            "value": "post, kedua"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "containerId": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "sortNum": 90000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Update One Post",
+      "url": "http://localhost:3007/backend7/api/v1/posts/1",
+      "method": "PATCH",
+      "modified": "2021-08-23T17:27:07.523Z",
+      "created": "2021-08-23T17:26:03.694Z",
+      "_id": "5de546eb-2510-48b7-bcd0-412fcc515de2",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "postTitle",
+            "value": "Post pertama"
+          },
+          {
+            "name": "postMessage",
+            "value": "test aja"
+          },
+          {
+            "name": "postKeywords",
+            "value": "post, test"
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "containerId": "7e26d748-f30b-429d-9910-6cb8078017d5",
+      "sortNum": 100000,
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "*/*"
+        },
+        {
+          "name": "User-Agent",
+          "value": "Thunder Client (https://www.thunderclient.io)"
+        }
+      ],
+      "colId": "20b0693d-8c74-4eae-90e8-5e7b024438c3",
+      "name": "Delete One Post",
+      "url": "http://localhost:3007/backend7/api/v1/posts/2",
+      "method": "DELETE",
+      "modified": "2021-08-23T17:43:17.029Z",
+      "created": "2021-08-23T17:40:15.548Z",
+      "_id": "d98dda2f-5bd6-45a6-9de7-fa8879510542",
+      "params": [],
+      "body": {
+        "type": "formencoded",
+        "raw": "",
+        "form": [
+          {
+            "name": "postTitle",
+            "value": "Post pertama"
+          },
+          {
+            "name": "postMessage",
+            "value": "test aja"
+          },
+          {
+            "name": "postKeywords",
+            "value": "post, test"
+          }
+        ]
+      },
+      "tests": []
+    }
+  ],
+  "settings": {
+    "headers": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX3VzZXJuYW1lIjoiYWRtaW4xIiwidXNlcl9lbWFpbCI6IndhcGF2ZTczMjFAYXNtbTUuY29tIiwidXNlcl9maXJzdF9uYW1lIjpudWxsLCJ1c2VyX2xhc3RfbmFtZSI6bnVsbCwidXNlcl9pbWFnZSI6IiIsInVzZXJfcGhvbmVfbnVtYmVyIjpudWxsLCJ1c2VyX3N0YXR1cyI6bnVsbCwidXNlcl92ZXJpZnkiOiJZIiwidXNlcl9jcmVhdGVkX2F0IjoiMjAyMS0wOC0xOVQxMTowNjo0NC4wMDBaIiwidXNlcl91cGRhdGVkX2F0IjoiMjAyMS0wOC0xOVQxMTowMDoyMi4wMDBaIiwiaWF0IjoxNjI5NzM1NzU0LCJleHAiOjE2Mjk4MjIxNTR9.TZmsP-gxanLo_1TkewrfHBWoHxkrj4Yue7VYTrWzmnI"
+    },
+    "tests": []
+  }
+}

@@ -27,6 +27,7 @@ module.exports = {
           user_username: userName,
           user_password: encryptPassword,
           user_image: '',
+          user_status: 'user',
           user_verify: 'N'
         }
         const result = await authModel.registerUserData(setData)
@@ -43,10 +44,10 @@ module.exports = {
         })
 
         const mailOptions = {
-          from: '"Test Admin" <admin-test.gmail.com>',
+          from: '"Admin" <admin-test.gmail.com>',
           to: result.user_email,
-          subject: 'Project App- Activation Email',
-          html: `<b>Congratulation! Now you can activate your account now. Please click this link to activate it.</b><a href="http://localhost:3006/backend6/api/v1/auth/user-activation/${result.id}">Click!</>`
+          subject: 'OneWord Blog- Activation Email',
+          html: `<b>Congratulation! Now you can activate your account now. Please click this link to activate it.</b><a href="http://localhost:3007/backend7/api/v1/auth/user-activation/${result.id}">Click!</>`
         }
 
         transporter.sendMail(mailOptions, function (error, info) {

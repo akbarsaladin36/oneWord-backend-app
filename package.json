@@ -1,7 +1,7 @@
 {
-  "name": "backend-boilerplate",
+  "name": "oneword_backend",
   "version": "1.0.0",
-  "description": "Backend Boilerplate",
+  "description": "oneWord Backend App",
   "main": "server.js",
   "scripts": {
     "dev": "npx nodemon ./src/server.js"

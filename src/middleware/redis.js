@@ -9,14 +9,9 @@ module.exports = {
         console.log('data ada di dalam redis')
         const newResult = JSON.parse(result)
         console.log(newResult)
-        return helper.response(
-          res,
-          200,
-          'Success get All of Movie Data.',
-          newResult
-        )
+        return helper.response(res, 200, 'Success get all of data.', newResult)
       } else {
-        console.log('data tidak ada di dalam redis.')
+        console.log('Data tidak ada di dalam redis.')
         next()
       }
     })
@@ -29,7 +24,7 @@ module.exports = {
         return helper.response(
           res,
           200,
-          'Success get Data by id.',
+          `Success get data by id ${id}.`,
           JSON.parse(result)
         )
       } else {
