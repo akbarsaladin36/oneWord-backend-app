@@ -20,7 +20,6 @@ router.patch(
   redisMiddleware.clearDataRedis,
   postsController.updatePost
 )
-
 router.delete(
   '/:id',
   authMiddleware.userAuthentication,

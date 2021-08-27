@@ -1,6 +1,6 @@
 <h1 align="center">Express - OneWord Blog App Website REST API</h1>
 
-This API is created for backend of OneWord Blog App. OneWord blog app is blog that inspired from one of the blog site from Google called Blogger. This API is tested by Thunder Client extension from Visual Studio Code. This API are created with Express as Nodejs framework and MySQL as store database. [More about Express](https://en.wikipedia.org/wiki/Express.js)
+This API is created for backend of OneWord Blog App. OneWord blog app is blog that inspired from one of the blog site from Google called Blogger. This API are created with Express as Nodejs framework and MySQL as store database. [More about Express](https://en.wikipedia.org/wiki/Express.js)
 
 ## Built With
 
@@ -12,7 +12,7 @@ This API is created for backend of OneWord Blog App. OneWord blog app is blog th
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
 2. Node_modules
-3. <a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder Client for VSCode</a>
+3. <a href="https://www.getpostman.com/">Postman</a>
 4. Web Server (ex. localhost)
 
 ## How to run the app ?
@@ -24,7 +24,7 @@ This API is created for backend of OneWord Blog App. OneWord blog app is blog th
 5. Create a database with the name #nama_database, and Import file sql to **phpmyadmin**
 6. Open Postman desktop application or Chrome web app extension that has installed before
 7. Choose HTTP Method and enter request url.(ex. localhost:3000/)
-8. You can see all the end point [here](https://jsoneditoronline.org/#left=cloud.3851a618880e4a6390228b008860acba)
+8. You can see all the end point [here](https://documenter.getpostman.com/view/14780095/TzzHjruR)
 9. Type `npm run dev` to activated the server.
 
 ## Set up .env file
@@ -44,9 +44,10 @@ SMTP_PASSWORD = <YOUR PASSWORD>
 
 ## Feature
 
-1. Login and Register API
+1. Login and Register User
 2. Update User's Profile
-3. Create and Update Post
+3. Get All User and Posts
+3. Create, Update, and Delete Post
 4. Create Comment for Post
 
 ## License
