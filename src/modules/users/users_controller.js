@@ -1,5 +1,6 @@
 const redis = require('redis')
 const client = redis.createClient()
+const fs = require('fs')
 const helper = require('../../helpers/helper')
 const usersModel = require('./users_model')
 
@@ -75,11 +76,22 @@ module.exports = {
         user_username: userName,
         user_first_name: userFirstName,
         user_last_name: userLastName,
+        user_image: req.file ? req.file.filename : '',
         user_phone_number: userPhoneNumber,
         user_updated_at: new Date(Date.now())
       }
       const result = await usersModel.getOneUser(id)
       if (result.length > 0) {
+        if (result.length > 0) {
+          const imageToDelete = result[0].user_image
+          const imageToExist = fs.existsSync(`src/uploads/${imageToDelete}`)
+
+          if (imageToExist && imageToDelete) {
+            fs.unlink(`src/uploads/${imageToDelete}`, (err) => {
+              if (err) throw err
+            })
+          }
+        }
         const newResult = await usersModel.updateOneUser(setData, id)
         return helper.response(
           res,
@@ -92,6 +104,35 @@ module.exports = {
           res,
           400,
           `the profile for id ${id} are not found. Please try again!`
+        )
+      }
+    } catch (error) {
+      console.log(error)
+      return helper.response(res, 404, 'Bad Request', null)
+    }
+  },
+
+  deleteUserProfile: async (req, res) => {
+    try {
+      const { id } = req.params
+      const result = await usersModel.getOneUser(id)
+      if (result.length > 0) {
+        if (result.length > 0) {
+          const imageToDelete = result[0].user_image
+          const imageToExist = fs.existsSync(`src/uploads/${imageToDelete}`)
+
+          if (imageToExist && imageToDelete) {
+            fs.unlink(`src/uploads/${imageToDelete}`, (err) => {
+              if (err) throw err
+            })
+          }
+        }
+        const newResult = await usersModel.deleteOneUser(id)
+        return helper.response(
+          res,
+          200,
+          `Successfully delete the profile user with id ${id}!`,
+          newResult
         )
       }
     } catch (error) {

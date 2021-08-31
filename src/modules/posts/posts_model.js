@@ -3,13 +3,9 @@ const connection = require('../../config/mysql')
 module.exports = {
   getAllPostsData: (id) => {
     return new Promise((resolve, reject) => {
-      connection.query(
-        'SELECT * FROM posts WHERE user_id = ? ORDER BY posts_id',
-        id,
-        (error, result) => {
-          !error ? resolve(result) : reject(new Error(error))
-        }
-      )
+      connection.query('SELECT * FROM posts', (error, result) => {
+        !error ? resolve(result) : reject(new Error(error))
+      })
     })
   },
 
@@ -90,7 +86,19 @@ module.exports = {
   getCommentDetailData: (id) => {
     return new Promise((resolve, reject) => {
       connection.query(
-        'SELECT * FROM comment WHERE posts_id = ?',
+        'SELECT * FROM comment JOIN users ON comment.user_id = users.user_id WHERE posts_id = ?',
+        id,
+        (error, result) => {
+          !error ? resolve(result) : reject(new Error(error))
+        }
+      )
+    })
+  },
+
+  getCommentData: (id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT * FROM comment JOIN users ON comment.user_id = users.user_id WHERE posts_id = ?',
         id,
         (error, result) => {
           !error ? resolve(result) : reject(new Error(error))

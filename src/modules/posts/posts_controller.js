@@ -1,29 +1,24 @@
 const redis = require('redis')
 const client = redis.createClient()
+const fs = require('fs')
 const helper = require('../../helpers/helper')
 const postsModel = require('./posts_model')
 
 module.exports = {
   allPosts: async (req, res) => {
     try {
-      const id = req.decodeToken.user_id
-      const result = await postsModel.getAllPostsData(id)
+      const result = await postsModel.getAllPostsData()
       if (result.length > 0) {
         for (const e of result) {
           e.userDetail = await postsModel.getUserDetailData(e.user_id)
         }
         client.set('getdata:all', JSON.stringify(result))
-        return helper.response(
-          res,
-          200,
-          `Successfully get all posts by user id ${id}!`,
-          result
-        )
+        return helper.response(res, 200, 'Successfully get all posts!', result)
       } else {
         return helper.response(
           res,
           200,
-          'no posts in dashboard.Please create a new post!',
+          'No posts in dashboard. Please create a new post!',
           null
         )
       }
@@ -69,6 +64,7 @@ module.exports = {
       const setData = {
         user_id: req.decodeToken.user_id,
         posts_title: postTitle,
+        posts_image: req.file ? req.file.filename : '',
         posts_message: postMessage,
         posts_keywords: postKeywords
       }
@@ -84,13 +80,24 @@ module.exports = {
     try {
       const { id } = req.params
       const { postTitle, postMessage, postKeywords } = req.body
+      const setData = {
+        posts_title: postTitle,
+        posts_image: req.file ? req.file.filename : '',
+        posts_message: postMessage,
+        posts_keywords: postKeywords,
+        posts_updated_at: new Date(Date.now())
+      }
       const result = await postsModel.getOnePostData(id)
       if (result.length > 0) {
-        const setData = {
-          posts_title: postTitle,
-          posts_message: postMessage,
-          posts_keywords: postKeywords,
-          posts_updated_at: new Date(Date.now())
+        if (result.length > 0) {
+          const imageToDelete = result[0].posts_image
+          const isImageExist = fs.existsSync(`src/uploads/${imageToDelete}`)
+
+          if (isImageExist && imageToDelete) {
+            fs.unlink(`src/uploads/${imageToDelete}`, (err) => {
+              if (err) throw err
+            })
+          }
         }
         const newResult = await postsModel.updateOnePostData(setData, id)
         return helper.response(
@@ -118,6 +125,16 @@ module.exports = {
       const { id } = req.params
       const result = await postsModel.getOnePostData(id)
       if (result.length > 0) {
+        if (result.length > 0) {
+          const imageToDelete = result[0].posts_image
+          const isImageExist = fs.existsSync(`src/uploads/${imageToDelete}`)
+
+          if (isImageExist && imageToDelete) {
+            fs.unlink(`src/uploads/${imageToDelete}`, (err) => {
+              if (err) throw err
+            })
+          }
+        }
         const newResult = await postsModel.deleteOnePostData(id)
         return helper.response(
           res,
@@ -140,6 +157,39 @@ module.exports = {
   },
 
   // Comment
+
+  getComment: async (req, res) => {
+    try {
+      const { id } = req.params
+      const result = await postsModel.getCommentData(id)
+      if (result.length > 0) {
+        client.set(`getdata:${id}`, JSON.stringify(result))
+        return helper.response(
+          res,
+          200,
+          'Succesfully get a comment data!',
+          result
+        )
+      } else if (result.length === 0) {
+        return helper.response(
+          res,
+          200,
+          'No comment in this post. Please become a first person to comment!',
+          null
+        )
+      } else {
+        return helper.response(
+          res,
+          400,
+          'Something wrong when loading a comment, please try again!',
+          null
+        )
+      }
+    } catch (error) {
+      console.log(error)
+      return helper.response(res, 404, 'Bad Request', null)
+    }
+  },
 
   createComment: async (req, res) => {
     try {

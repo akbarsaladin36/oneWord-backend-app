@@ -47,7 +47,7 @@ module.exports = {
           from: '"Admin" <admin-test.gmail.com>',
           to: result.user_email,
           subject: 'OneWord Blog- Activation Email',
-          html: `<b>Congratulation! Now you can activate your account now. Please click this link to activate it.</b><a href="http://localhost:3007/backend7/api/v1/auth/user-activation/${result.id}">Click!</>`
+          html: `<b>Congratulation! Now you can activate your account now. Please click this link to activate it.</b><a href="http://localhost:3000/user-activation/${result.id}">Click!</>`
         }
 
         transporter.sendMail(mailOptions, function (error, info) {

@@ -3,6 +3,7 @@ const router = express.Router()
 const usersController = require('./users_controller')
 const authMiddleware = require('../../middleware/auth')
 const redisMiddleware = require('../../middleware/redis')
+const uploadFile = require('../../middleware/upload')
 
 router.get(
   '/search',
@@ -18,7 +19,16 @@ router.patch(
   '/:id',
   authMiddleware.userAuthentication,
   redisMiddleware.clearDataRedis,
+  uploadFile,
   usersController.updateUserProfile
+)
+
+router.delete(
+  '/:id',
+  authMiddleware.userAuthentication,
+  redisMiddleware.clearDataRedis,
+  uploadFile,
+  usersController.deleteUserProfile
 )
 
 module.exports = router
