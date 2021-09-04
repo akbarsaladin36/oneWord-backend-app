@@ -54,13 +54,50 @@ module.exports = {
     try {
       const { id } = req.params
       const result = await usersModel.getOneUser(id)
-      client.set(`getdata:${id}`, JSON.stringify(result))
-      return helper.response(
-        res,
-        200,
-        `Success get user profile with id ${id}!`,
-        result
-      )
+      if (result.length > 0) {
+        delete result[0].user_password
+        for (const e of result) {
+          e.TotalPost = await usersModel.getPostCountByUserId(e.user_id)
+          e.TotalComment = await usersModel.getCommentCountByUserId(e.user_id)
+        }
+        client.set(`getdata:${id}`, JSON.stringify(result))
+        return helper.response(
+          res,
+          200,
+          `Success get user profile with id ${id}!`,
+          result
+        )
+      } else {
+        return helper.response(
+          res,
+          400,
+          `The user profile with id ${id} is not found. Please try again!`
+        )
+      }
+    } catch (error) {
+      console.log(error)
+      return helper.response(res, 404, 'Bad Request', null)
+    }
+  },
+
+  allPostsByUserId: async (req, res) => {
+    try {
+      const { id } = req.params
+      const result = await usersModel.getPostsByUserId(id)
+      if (result.length > 0) {
+        return helper.response(
+          res,
+          200,
+          `Successfully get all posts by user with ${id}!`,
+          result
+        )
+      } else {
+        return helper.response(
+          res,
+          400,
+          `All posts with user id ${id} is not found. Please try again!`
+        )
+      }
     } catch (error) {
       console.log(error)
       return helper.response(res, 404, 'Bad Request', null)

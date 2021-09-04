@@ -15,6 +15,13 @@ router.get(
   authMiddleware.userAuthentication,
   usersController.userProfile
 )
+
+router.get(
+  '/all-posts/:id',
+  authMiddleware.userAuthentication,
+  usersController.allPostsByUserId
+)
+
 router.patch(
   '/:id',
   authMiddleware.userAuthentication,

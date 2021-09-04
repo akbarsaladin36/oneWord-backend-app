@@ -36,6 +36,42 @@ module.exports = {
     })
   },
 
+  getPostCountByUserId: (id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT COUNT(*) as total_posts FROM posts WHERE user_id = ?',
+        id,
+        (error, result) => {
+          !error ? resolve(result) : reject(new Error(error))
+        }
+      )
+    })
+  },
+
+  getCommentCountByUserId: (id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT COUNT(*) as total_comment FROM comment WHERE user_id = ?',
+        id,
+        (error, result) => {
+          !error ? resolve(result) : reject(new Error(error))
+        }
+      )
+    })
+  },
+
+  getPostsByUserId: (id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        'SELECT * FROM posts WHERE user_id = ?',
+        id,
+        (error, result) => {
+          !error ? resolve(result) : reject(new Error(error))
+        }
+      )
+    })
+  },
+
   updateOneUser: (setData, id) => {
     return new Promise((resolve, reject) => {
       connection.query(
